@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Miow Kar Chun" />
+
+    <title>Task 1.2 HTML and CSS Demo Page</title>
+    <title>Title of Interesting Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .source-link {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Drawing Shapes of SVG</h1>
+    <svg width="300" height="50">
+        <circle cx="25" cy="25" r="25"></circle>
+    </svg>
+
+    <!-- <svg height="140" width="300" xmlns="http://www.w3.org/2000/svg">
+        <ellipse rx="100" ry="50" cx="120" cy="70"
+            style="fill:rgb(0, 179, 255);stroke:rgb(45, 0, 128);stroke-width:3" />
+    </svg> -->
+    <svg height="300" width="600" >
+        <polyline points="0,10,70,250 70,75 150, 50 200, 300, 400"
+        style="fill:none;stroke:red;stroke-width:4;"/>
+    </svg>
+    <!-- <svg height="180" width="500" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160"
+        style="fill:yellow;stroke:red;stroke-width:4" />
+      </svg> -->
+      <svg width="320" height="130" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="100" x="10" y="10" style="fill:rgb(255, 102, 0);stroke-width:3;stroke:rgb(0, 191, 255)" />
+      </svg>
+      <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg" style="background-color: rgb(121, 158, 158);">
+        <rect x="10" y="50" width="50" height="150" fill="blue" />
+        <rect x="80" y="70" width="50" height="130" fill="green" />
+        <rect x="150" y="30" width="50" height="170" fill="red" />
+        <rect x="220" y="100" width="50" height="100" fill="purple" />
+        <rect x="290" y="80" width="50" height="120" fill="orange" />   
+      </svg>
+      
+    <svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
+                <stop id="stop1" stop-color="rgba(232.147, 75.465, 1.311, 1)" offset="0%"></stop>
+                <stop id="stop2" stop-color="rgba(251, 168, 31, 1)" offset="100%"></stop>
+            </linearGradient>
+        </defs>
+        <path fill="url(#sw-gradient)"
+            d="M16.4,-19.1C23,-14,31.5,-10.5,32.5,-5.6C33.5,-0.7,27,5.6,22.5,12.7C18.1,19.9,15.6,28,10.7,30.1C5.8,32.2,-1.6,28.4,-10.7,26.4C-19.8,24.4,-30.6,24.2,-33.4,19.3C-36.1,14.5,-30.8,5,-29.1,-5.2C-27.3,-15.3,-29.1,-26.1,-24.9,-31.6C-20.6,-37.2,-10.3,-37.5,-2.7,-34.2C4.9,-31,9.7,-24.2,16.4,-19.1Z"
+            width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: 0.3s;"></path>
+    </svg>
+    <footer>COS3045 Data Visualisation</footer>
+</body>
+
+</html>

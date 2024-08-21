@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise 1"/>
+	<meta name="keywords"		  content="HTML, CSS"/>
+	<meta name="author"			  content="Miow Kar Chun"/>
+
+	<title>Task 1.2 HTML and CSS Demo Page</title>
+    <title>Title of Interesting Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+        figcaption {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .image-container {
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .source-link {
+            color: blue;
+            text-decoration: none;
+        }
+        .source-link:hover {
+            text-decoration: underline;
+        }
+		.buttons {
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .btn.active {
+            background-color: #d0d0d0;
+        }
+        .chart-container {
+            width: 80%;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Title of Interesting Article</h1>
+    <h2>Author of Interesting Article</h2>
+
+    <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
+        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
+        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
+        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+        voluptatem sequi nesciunt.
+    </p>
+    <p>
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
+        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore 
+        magnam aliquam quaerat voluptatem.
+    </p>
+
+    <ul>
+        <li>Lorem ipsum dolor sit.</li>
+        <li>Nulla facilisi. Curabitur scelerisque.</li>
+        <li>Donec ac tristique ipsum.</li>
+        <li>Pellentesque vitae nulla.</li>
+    </ul>
+
+
+  
+<div class="buttons">
+	<button class="btn active" onclick="updateChart('2019')" id="btn2019">2019</button>
+	<button class="btn" onclick="updateChart('2021')" id="btn2021">2021</button>
+	<button class="btn" onclick="updateChart('both')" id="btnBoth">Both</button>
+</div>
+
+<div class="chart-container">
+	<canvas id="petChart"></canvas>
+</div>
+
+<h2>Data Table</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Pet Type</th>
+			<th>Household Penetration (2019)</th>
+			<th>Household Penetration (2021)</th>
+		</tr>
+	</thead>
+	<tbody id="dataTable">
+	</tbody>
+</table>
+<footer>COS3045 Data Visualisation</footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const data = {
+        labels: ['Dogs', 'Cats', 'Fish', 'Birds', 'Small Mammals'],
+        datasets: {
+            '2019': [40, 27, 11, 9, 3],
+            '2021': [47, 30, 13, 14, 5]
+        }
+    };
+
+    const ctx = document.getElementById('petChart').getContext('2d');
+    let petChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: '2019',
+                data: data.datasets['2019'],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function updateChart(year) {
+        let dataset;
+
+        if (year === 'both') {
+            dataset = [
+                {
+                    label: '2019',
+                    data: data.datasets['2019'],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: '2021',
+                    data: data.datasets['2021'],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ];
+        } else {
+            dataset = [{
+                label: year,
+                data: data.datasets[year],
+                backgroundColor: year === '2019' ? 'rgba(54, 162, 235, 0.6)' : 'rgba(255, 99, 132, 0.6)',
+                borderColor: year === '2019' ? 'rgba(54, 162, 235, 1)' : 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }];
+        }
+
+        petChart.data.datasets = dataset;
+        petChart.update();
+
+        document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`btn${year === 'both' ? 'Both' : year}`).classList.add('active');
+
+
+        updateTable(year);
+    }
+
+    function updateTable(year) {
+        const tableBody = document.getElementById('dataTable');
+        tableBody.innerHTML = '';
+
+        for (let i = 0; i < data.labels.length; i++) {
+            const row = document.createElement('tr');
+            const cellAnimal = document.createElement('td');
+            const cell2019 = document.createElement('td');
+            const cell2021 = document.createElement('td');
+
+            cellAnimal.textContent = data.labels[i];
+            cell2019.textContent = year === '2019' || year === 'both' ? data.datasets['2019'][i] : '-';
+            cell2021.textContent = year === '2021' || year === 'both' ? data.datasets['2021'][i] : '-';
+
+            row.appendChild(cellAnimal);
+            row.appendChild(cell2019);
+            row.appendChild(cell2021);
+            tableBody.appendChild(row);
+        }
+    }
+
+    // Initialize table with 2019 data
+    updateTable('2019');
+</script>
+
+</body>
+</html>
