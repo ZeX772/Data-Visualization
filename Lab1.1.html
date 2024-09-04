@@ -1,211 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-	<meta charset="UTF-8"/>
-	<meta name="description"	content="Data Visualisation Exercise 1"/>
-	<meta name="keywords"		  content="HTML, CSS"/>
-	<meta name="author"			  content="Miow Kar Chun"/>
-
-	<title>Lab 1.1</title>
-    <title>Title of Interesting Article</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Miow Kar Chun" />
+    <title>Lab 1.1</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
-      rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: azure;
-           
-        }
-        h1 {
-            font-size: 32px;
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        p {
-            margin-bottom: 10px;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
         figure {
-            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
         }
-        figcaption {
-            font-size: 14px;
-            color: #555;
-            margin-top: 5px;
-        }
-        .image-container {
-            text-align: center;
-        }
+
         img {
             max-width: 100%;
             height: auto;
         }
-        .source-link {
-            color: blue;
-            text-decoration: none;
+
+        ul {
+            list-style: none;
+            padding-left: 0;
         }
-        .source-link:hover {
-            text-decoration: underline;
+
+        .li1 {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
         }
-		
+
+        .li1::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 20px;
+            color: black;
+        }
+
+        .image-table {
+            width: 100%;
+            text-align: center;
+        }
+
+        .image-table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* .image-table img {
+        width: 150px; 
+        height: 150px; 
+        display: block;
+        margin: 0 auto; 
+    }
+
+    .image-table p {
+        text-align: center;
+        margin-top: 10px;
+        color:black;
+    } */
     </style>
 </head>
+
 <body id="top">
-    <header class="header"style="background-color: white;"  data-header >
+    <header class="header" style="background-color: white;" data-header>
         <div class="container">
-    
-          <a href="#" class="logo">
-            <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
-                <img src="clipboard.png" alt="Logo" width="120" height="80">
-          </a>
-    
-          <nav class="navbar"  data-navbar >
-            <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-              <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
-            </button>
-    
-            <ul class="navbar-list" >
-              <li>
-                <a href="index.html" class="navbar-link active" data-nav-link>Home</a>
-              </li>
-    
-              <li>
-                <a href="about.html" class="navbar-link"  data-nav-link>About Us</a>
-              </li>
-    
-              <li>
-                <a href="services.html" class="navbar-link" data-nav-link>Classes</a>
-              </li>
-    
-              <li>
-                <a href="additional.html" class="navbar-link" data-nav-link>Blog</a>
-              </li>
-    
-              <li>
-                <a href="contact.html" class="navbar-link" data-nav-link>Contact Us</a>
-              </li>
-            </ul>
-          </nav>
-    
-          <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-          </button>
-        </div>
-      </header>
-    <!-- <nav class="navbar navbar-expand-lg" style="background-color: #000000;">
-        <div class="container-fluid px-0">
-            <a class="navbar-brand" href="#">
-                <img src="clipboard.png" alt="Logo" width="120" height="80">
+            <a href="#" class="logo">
+                <img src="clipboard.png" alt="Logo" width="100" height="auto">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">For Startups</a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link active" data-nav-link>Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">For Investor/Advisor</a>
+
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 1</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab1.1.html">Lab 1.1</a></li>
+                            <li><a href="Lab1.2.html">Lab 1.2</a></li>
+                            <li><a href="Lab1.3.html">Lab 1.3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">All Profile</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 2</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab2.1.html">Lab 2.1</a></li>
+                            <li><a href="Lab2.2.html">Lab 2.2</a></li>
+                            <li><a href="Lab2.3.html">Lab 2.3</a></li>
+                            <li><a href="Lab2.4.html">Lab 2.4</a></li>
+                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">All Event</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Seek Funding</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 4</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Community Article</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 5</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 6</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 7</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Careers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Support</a>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 8</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
         </div>
-    </nav> -->
-    <!-- Navbar End -->
-     <main>
-        <h1 style="margin-top:100px;">Title of Interesting Article</h1>
+    </header>
+
+    <main>
+        <h1>Title of Interesting Article</h1>
         <h2>Author of Interesting Article</h2>
-    
+
         <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
-            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
-            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+            sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
             voluptatem sequi nesciunt.
         </p>
         <p>
-            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
-            adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore 
+            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+            adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
             magnam aliquam quaerat voluptatem.
         </p>
-    
+
         <ul>
-            <li>Lorem ipsum dolor sit.</li>
-            <li>Nulla facilisi. Curabitur scelerisque.</li>
-            <li>Donec ac tristique ipsum.</li>
-            <li>Pellentesque vitae nulla.</li>
+            <li class="li1">Lorem ipsum dolor sit.</li>
+            <li class="li1">Nulla facilisi. Curabitur scelerisque.</li>
+            <li class="li1">Donec ac tristique ipsum.</li>
+            <li class="li1">Pellentesque vitae nulla.</li>
         </ul>
-    
-        <!-- <button>2019</button>
-        <button>2021</button>
-        <button>Both</button> -->
+        <!-- <table class="image-table">
+            <tbody><tr>
+                <td>
+                    <img src="dog.png" alt="Dog">
+                    <p>Dog</p>
+                </td>
+                <td>
+                    <img src="cat.jpg" alt="Cat">
+                    <p>Cat</p>
+                </td>
+                <td>
+                    <img src="fish.jpg" alt="Fish">
+                    <p>Fish</p>
+                </td>
+            </tr>
+        </tbody></table> -->
         <figure>
-            <img src="pet_ownership_in_australia_table.png" alt="Comparison of Pet Ownership in 2019 and 2021" style="width: 500px; height: 300px;">
+            <img src="pet_ownership_in_australia_table.png" alt="Comparison of Pet Ownership in 2019 and 2021"
+                style="width: 500px; height: 300px;">
             <figcaption>
-                Fig 1. Comparison of Pet Ownership in 2019 and 2021. Data Source: 
-                <a href="https://animalmedicinesaustralia.org.au/wp-content/uploads/2021/08/AMAU005-PATP-Report21_v1.41_WEB.pdf" class="source-link">Animal Medicines Australia Report</a>
+                Fig 1. Comparison of Pet Ownership in 2019 and 2021. Data Source:
+                <a href="https://animalmedicinesaustralia.org.au/wp-content/uploads/2021/08/AMAU005-PATP-Report21_v1.41_WEB.pdf"
+                    class="source-link">Animal Medicines Australia Report</a>
             </figcaption>
         </figure>
-    
+
         <p>
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit 
-            laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum 
+            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+            laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
             qui dolorem eum fugiat quo voluptas nulla pariatur?
         </p>
     </main>
-        <footer>COS3045 Data Visualisation</footer>
-   
-        <script src="./assets/js/script.js" defer></script>
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <footer class="footer">
+        <div class="content">
+            <span class="logo">COS30045 Data Visualisation</span>
+        </div>
+    </footer>
+
+    <!-- 
+        - #BACK TO TOP
+      -->
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+
+    <script src="./assets/js/script.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

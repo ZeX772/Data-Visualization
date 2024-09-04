@@ -1,106 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-	<meta charset="UTF-8"/>
-	<meta name="description"	content="Data Visualisation Exercise 1"/>
-	<meta name="keywords"		  content="HTML, CSS"/>
-	<meta name="author"			  content="Miow Kar Chun"/>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Miow Kar Chun" />
 
-	<title>Lab 1.2</title>
+    <title>Lab 1.2</title>
     <title>Title of Interesting Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
+        .buttons {
+            display: flex;
+            align-items: center;
+            border-radius: 30px;
+
         }
-        h1 {
-            font-size: 32px;
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        p {
-            margin-bottom: 10px;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        figure {
-            margin: 20px 0;
-            text-align: center;
-        }
-        figcaption {
-            font-size: 14px;
-            color: #555;
-            margin-top: 5px;
-        }
-        .image-container {
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        .source-link {
-            color: blue;
-            text-decoration: none;
-        }
-        .source-link:hover {
-            text-decoration: underline;
-        }
-		.buttons {
-            margin-bottom: 20px;
-        }
-        .btn {
+
+        .buttons button {
+            border: 2px solid #006699;
             padding: 10px 20px;
-            border: none;
+            background-color: white;
+            color: #006699;
+            border-radius: 30px;
             cursor: pointer;
-            margin-right: 5px;
-            background-color: #f0f0f0;
-            border-radius: 4px;
-        }
-        .btn.active {
-            background-color: #d0d0d0;
-        }
-        .chart-container {
-            width: 80%;
-            margin: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
 </head>
+
 <body>
+    <header class="header" style="background-color: white;" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="clipboard.png" alt="Logo" width="100" height="auto">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link active" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 1</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab1.1.html">Lab 1.1</a></li>
+                            <li><a href="Lab1.2.html">Lab 1.2</a></li>
+                            <li><a href="Lab1.3.html">Lab 1.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 2</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab2.1.html">Lab 2.1</a></li>
+                            <li><a href="Lab2.2.html">Lab 2.2</a></li>
+                            <li><a href="Lab2.3.html">Lab 2.3</a></li>
+                            <li><a href="Lab2.4.html">Lab 2.4</a></li>
+                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 4</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 5</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 6</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 7</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 8</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
 
     <h1>Title of Interesting Article</h1>
     <h2>Author of Interesting Article</h2>
 
     <p>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
-        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
-        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
         voluptatem sequi nesciunt.
     </p>
     <p>
-        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, 
-        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore 
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
         magnam aliquam quaerat voluptatem.
     </p>
 
@@ -112,126 +154,139 @@
     </ul>
 
 
-  
-<div class="buttons">
-	<button class="btn active" onclick="updateChart('2019')" id="btn2019">2019</button>
-	<button class="btn" onclick="updateChart('2021')" id="btn2021">2021</button>
-	<button class="btn" onclick="updateChart('both')" id="btnBoth">Both</button>
-</div>
 
-<div class="chart-container">
-	<canvas id="petChart"></canvas>
-</div>
+    <div class="buttons">
+        <button class="btn active" onclick="updateChart('2019')" id="btn2019">2019</button>
+        <button class="btn" onclick="updateChart('2021')" id="btn2021">2021</button>
+        <button class="btn" onclick="updateChart('both')" id="btnBoth">Both</button>
+    </div>
 
-<h2>Data Table</h2>
-<table>
-	<thead>
-		<tr>
-			<th>Pet Type</th>
-			<th>Household Penetration (2019)</th>
-			<th>Household Penetration (2021)</th>
-		</tr>
-	</thead>
-	<tbody id="dataTable">
-	</tbody>
-</table>
-<footer>COS3045 Data Visualisation</footer>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const data = {
-        labels: ['Dogs', 'Cats', 'Fish', 'Birds', 'Small Mammals'],
-        datasets: {
-            '2019': [40, 27, 11, 9, 3],
-            '2021': [47, 30, 13, 14, 5]
-        }
-    };
+    <div class="chart-container">
+        <canvas id="petChart"></canvas>
+    </div>
 
-    const ctx = document.getElementById('petChart').getContext('2d');
-    let petChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: data.labels,
-            datasets: [{
-                label: '2019',
-                data: data.datasets['2019'],
-                backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    <h2>Data Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Pet Type</th>
+                <th>Household Penetration (2019)</th>
+                <th>Household Penetration (2021)</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable">
+        </tbody>
+    </table>
+    <footer class="footer">
+        <div class="content">
+            <span class="logo">COS30045 Data Visualisation</span>
+        </div>
+    </footer>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const data = {
+            labels: ['Dogs', 'Cats', 'Fish', 'Birds', 'Small Mammals'],
+            datasets: {
+                '2019': [40, 27, 11, 9, 3],
+                '2021': [47, 30, 13, 14, 5]
             }
-        }
-    });
+        };
 
-    function updateChart(year) {
-        let dataset;
-
-        if (year === 'both') {
-            dataset = [
-                {
+        const ctx = document.getElementById('petChart').getContext('2d');
+        let petChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: [{
                     label: '2019',
                     data: data.datasets['2019'],
                     backgroundColor: 'rgba(54, 162, 235, 0.6)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
-                },
-                {
-                    label: '2021',
-                    data: data.datasets['2021'],
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-            ];
-        } else {
-            dataset = [{
-                label: year,
-                data: data.datasets[year],
-                backgroundColor: year === '2019' ? 'rgba(54, 162, 235, 0.6)' : 'rgba(255, 99, 132, 0.6)',
-                borderColor: year === '2019' ? 'rgba(54, 162, 235, 1)' : 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }];
+            }
+        });
+
+        function updateChart(year) {
+            let dataset;
+
+            if (year === 'both') {
+                dataset = [
+                    {
+                        label: '2019',
+                        data: data.datasets['2019'],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: '2021',
+                        data: data.datasets['2021'],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ];
+            } else {
+                dataset = [{
+                    label: year,
+                    data: data.datasets[year],
+                    backgroundColor: year === '2019' ? 'rgba(54, 162, 235, 0.6)' : 'rgba(255, 99, 132, 0.6)',
+                    borderColor: year === '2019' ? 'rgba(54, 162, 235, 1)' : 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }];
+            }
+
+            petChart.data.datasets = dataset;
+            petChart.update();
+
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn${year === 'both' ? 'Both' : year}`).classList.add('active');
+
+
+            updateTable(year);
         }
 
-        petChart.data.datasets = dataset;
-        petChart.update();
+        function updateTable(year) {
+            const tableBody = document.getElementById('dataTable');
+            tableBody.innerHTML = '';
 
-        document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(`btn${year === 'both' ? 'Both' : year}`).classList.add('active');
+            for (let i = 0; i < data.labels.length; i++) {
+                const row = document.createElement('tr');
+                const cellAnimal = document.createElement('td');
+                const cell2019 = document.createElement('td');
+                const cell2021 = document.createElement('td');
 
+                cellAnimal.textContent = data.labels[i];
+                cell2019.textContent = year === '2019' || year === 'both' ? data.datasets['2019'][i] : '-';
+                cell2021.textContent = year === '2021' || year === 'both' ? data.datasets['2021'][i] : '-';
 
-        updateTable(year);
-    }
-
-    function updateTable(year) {
-        const tableBody = document.getElementById('dataTable');
-        tableBody.innerHTML = '';
-
-        for (let i = 0; i < data.labels.length; i++) {
-            const row = document.createElement('tr');
-            const cellAnimal = document.createElement('td');
-            const cell2019 = document.createElement('td');
-            const cell2021 = document.createElement('td');
-
-            cellAnimal.textContent = data.labels[i];
-            cell2019.textContent = year === '2019' || year === 'both' ? data.datasets['2019'][i] : '-';
-            cell2021.textContent = year === '2021' || year === 'both' ? data.datasets['2021'][i] : '-';
-
-            row.appendChild(cellAnimal);
-            row.appendChild(cell2019);
-            row.appendChild(cell2021);
-            tableBody.appendChild(row);
+                row.appendChild(cellAnimal);
+                row.appendChild(cell2019);
+                row.appendChild(cell2021);
+                tableBody.appendChild(row);
+            }
         }
-    }
 
-    // Initialize table with 2019 data
-    updateTable('2019');
-</script>
-
+        updateTable('2019');
+    </script>
+    <script src="./assets/js/script.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

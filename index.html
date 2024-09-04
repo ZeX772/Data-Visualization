@@ -2,23 +2,42 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8" />
-    <meta name="description" content="Data Visualisation Exercise 1" />
-    <meta name="keywords" content="HTML, CSS" />
-    <meta name="author" content="Miow Kar Chun" />
-
-    <title>Lab 2.4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-
     <style>
+        .water-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1614279629245-d7a138f035f0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+            /* Ensure it's below the navbar and dropdown */
+        }
 
+        .navbar {
+            position: relative;
+            z-index: 1000;
+            /* Ensure it's above the water-container */
+        }
+
+        .navbar-list .dropdown {
+            position: absolute;
+            background-color: white;
+            z-index: 1000;
+            /* Ensure it's above other content */
+        }
+
+        body {
+            padding: 0px;
+        }
     </style>
 </head>
 
@@ -54,7 +73,6 @@
                             <li><a href="Lab2.2.html">Lab 2.2</a></li>
                             <li><a href="Lab2.3.html">Lab 2.3</a></li>
                             <li><a href="Lab2.4.html">Lab 2.4</a></li>
-                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
                         </ul>
                     </li>
                     <li class="navbar-item dropdown-toggle">
@@ -116,36 +134,31 @@
         </div>
     </header>
 
-    <h1>The D3</h1>
-    <p id="chart" style="min-height: 70vh;"></p>
-    <script src="./assets/js/task2.4.js"></script>
+
+    <div class="water-container"></div>
+
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
     <script>
-        //  d3.csv("task2.4.csv").then(function(data){
-        //     console.log(data);
-        //     wombatSightings = data;
+        $(document).ready(function () {
+            $('.water-container').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.04,
+            });
 
-        //     barChart(wombatSightings);
-        //  })
+            $('.water-container').on('click', function (e) {
+                const $el = $(this);
+                const x = e.clientX;
+                const y = e.clientY;
+
+                $el.ripples('drop', x, y, 20, 0.04);
+            });
+        });
+
     </script>
-    <footer class="footer">
-        <div class="content">
-            <span class="logo">COS30045 Data Visualisation</span>
-        </div>
-    </footer>
-
-    <!-- 
-    - #BACK TO TOP
-  -->
-    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
-    </a>
-
-
-    <script src="./assets/js/script.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
 </body>
 
 </html>

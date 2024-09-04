@@ -2,13 +2,9 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="UTF-8" />
-    <meta name="description" content="Data Visualisation Exercise 1" />
-    <meta name="keywords" content="HTML, CSS" />
-    <meta name="author" content="Miow Kar Chun" />
-
-    <title>Lab 2.4</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2.4 Additional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,9 +12,50 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
-
     <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex-grow: 1;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: calc(100% + 20px);
+            margin-bottom: -20px;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .figure-label {
+            text-align: center;
+            font-family: 'Rubik', sans-serif;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -115,18 +152,96 @@
             </button>
         </div>
     </header>
+    <h1 class="title">Chart drawn from CSV file</h1>
 
-    <h1>The D3</h1>
-    <p id="chart" style="min-height: 70vh;"></p>
-    <script src="./assets/js/task2.4.js"></script>
-    <script>
-        //  d3.csv("task2.4.csv").then(function(data){
-        //     console.log(data);
-        //     wombatSightings = data;
+    <div class="content">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script>
+            d3.csv("pet_ownership.csv").then(function (data) {
 
-        //     barChart(wombatSightings);
-        //  })
-    </script>
+                data.forEach(function (d) {
+                    d.pets2019 = +d.pets2019;
+                    d.pets2021 = +d.pets2021;
+                });
+
+                // Sort the data in descending order for both years
+                const data2019 = [...data].sort((a, b) => b.pets2019 - a.pets2019);
+                const data2021 = [...data].sort((a, b) => b.pets2021 - a.pets2021);
+
+                const w = 700;
+                const h = 200;
+                const barPadding = 5;
+
+                const svg2019 = d3.select(".content")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h + 30) //important
+                    .attr("style", "margin: 20px;");
+
+                svg2019.selectAll("rect")
+                    .data(data2019)
+                    .enter()
+                    .append("rect")
+                    .attr("x", (d, i) => i * (w / data2019.length))
+                    .attr("y", d => h - d.pets2019 * 5)
+                    .attr("width", w / data2019.length - barPadding)
+                    .attr("height", d => d.pets2019 * 5)
+                    .attr("fill", "teal");
+
+                // Add labels at the bottom of the bars for 2019
+                svg2019.selectAll("text.label")
+                    .data(data2019)
+                    .enter()
+                    .append("text")
+                    .text(d => d.animal)
+                    .attr("x", (d, i) => i * (w / data2019.length) + (w / data2019.length - barPadding) / 2)
+                    .attr("y", h + 15)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "black")
+                    .attr("font-size", "12px");
+
+                d3.select(".content")
+                    .append("div")
+                    .attr("class", "figure-label")
+                    .text("Fig 1: Pet ownership in 2019");
+
+                const svg2021 = d3.select(".content")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h + 30)
+                    .attr("style", "margin: 20px;");
+
+                svg2021.selectAll("rect")
+                    .data(data2021)
+                    .enter()
+                    .append("rect")
+                    .attr("x", (d, i) => i * (w / data2021.length))
+                    .attr("y", d => h - d.pets2021 * 5)
+                    .attr("width", w / data2021.length - barPadding)
+                    .attr("height", d => d.pets2021 * 5)
+                    .attr("fill", "slateblue");
+
+                svg2021.selectAll("text.label")
+                    .data(data2021)
+                    .enter()
+                    .append("text")
+                    .text(d => d.animal)
+                    .attr("x", (d, i) => i * (w / data2021.length) + (w / data2021.length - barPadding) / 2)
+                    .attr("y", h + 15)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "")
+                    .attr("font-size", "12px")
+
+                d3.select(".content")
+                    .append("div")
+                    .attr("class", "figure-label")
+                    .text("Fig 2: Pet ownership in 2021");
+
+            });
+
+        </script>
+    </div>
+
     <footer class="footer">
         <div class="content">
             <span class="logo">COS30045 Data Visualisation</span>
@@ -135,17 +250,13 @@
 
     <!-- 
     - #BACK TO TOP
-  -->
+    -->
     <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
         <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
     </a>
 
-
     <script src="./assets/js/script.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
+    <script type="module" src="https://unpkg.com/ionicons@5.5.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 
 </html>

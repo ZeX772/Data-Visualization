@@ -10,6 +10,12 @@
 
     <title>Lab 1.3</title>
     <title>Title of Interesting Article</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -64,12 +70,115 @@
         .source-link:hover {
             text-decoration: underline;
         }
+
+        .footer {
+            background: linear-gradient(to right, #003366, #006699);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: calc(100% + 85px);
+            margin-left: -40px;
+            margin-right: -40px;
+            margin-bottom: -80px;
+        }
     </style>
 </head>
 
 <body>
 
     <h1>Drawing Shapes of SVG</h1>
+    <header class="header" style="background-color: white;" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="clipboard.png" alt="Logo" width="100" height="auto">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="index.html" class="navbar-link active" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 1</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab1.1.html">Lab 1.1</a></li>
+                            <li><a href="Lab1.2.html">Lab 1.2</a></li>
+                            <li><a href="Lab1.3.html">Lab 1.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 2</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab2.1.html">Lab 2.1</a></li>
+                            <li><a href="Lab2.2.html">Lab 2.2</a></li>
+                            <li><a href="Lab2.3.html">Lab 2.3</a></li>
+                            <li><a href="Lab2.4.html">Lab 2.4</a></li>
+                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 4</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 5</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 6</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 7</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 8</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Sub-item 1</a></li>
+                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="#">Sub-item 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
     <svg width="300" height="50">
         <circle cx="25" cy="25" r="25"></circle>
     </svg>
@@ -78,26 +187,72 @@
         <ellipse rx="100" ry="50" cx="120" cy="70"
             style="fill:rgb(0, 179, 255);stroke:rgb(45, 0, 128);stroke-width:3" />
     </svg> -->
-    <svg height="300" width="600" >
-        <polyline points="0,10,70,250 70,75 150, 50 200, 300, 400"
-        style="fill:none;stroke:red;stroke-width:4;"/>
+    <svg height="300" width="600">
+        <polyline points="0,10,70,250 70,75 150, 50 200, 300, 400" style="fill:none;stroke:red;stroke-width:4;" />
     </svg>
     <!-- <svg height="180" width="500" xmlns="http://www.w3.org/2000/svg">
         <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160"
         style="fill:yellow;stroke:red;stroke-width:4" />
       </svg> -->
-      <svg width="320" height="130" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="100" x="10" y="10" style="fill:rgb(255, 102, 0);stroke-width:3;stroke:rgb(0, 191, 255)" />
-      </svg>
-      <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg" style="background-color: rgb(121, 158, 158);">
+    <div class="content">
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script>
+            d3.csv("pet_ownership.csv").then(function (data) {
+
+                data.forEach(function (d) {
+                    d.pets2019 = +d.pets2019;
+                    d.pets2021 = +d.pets2021;
+                });
+
+                // Sort the data in descending order for both years
+                const data2019 = [...data].sort((a, b) => b.pets2019 - a.pets2019);
+                const data2021 = [...data].sort((a, b) => b.pets2021 - a.pets2021);
+
+                const w = 700;
+                const h = 200;
+                const barPadding = 5;
+
+                const svg2019 = d3.select(".content")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h + 30) //important
+                    .attr("style", "margin: 20px;");
+
+                svg2019.selectAll("rect")
+                    .data(data2019)
+                    .enter()
+                    .append("rect")
+                    .attr("x", (d, i) => i * (w / data2019.length))
+                    .attr("y", d => h - d.pets2019 * 5)
+                    .attr("width", w / data2019.length - barPadding)
+                    .attr("height", d => d.pets2019 * 5)
+                    .attr("fill", "teal");
+            });
+
+        </script>
+    </div>
+    <svg width="320" height="130" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="100" x="10" y="10"
+            style="fill:rgb(255, 102, 0);stroke-width:3;stroke:rgb(0, 191, 255)" />
+    </svg>
+    <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg"
+        style="background-color: rgb(121, 158, 158);margin-right:50px;">
         <rect x="10" y="50" width="50" height="150" fill="blue" />
         <rect x="80" y="70" width="50" height="130" fill="green" />
         <rect x="150" y="30" width="50" height="170" fill="red" />
         <rect x="220" y="100" width="50" height="100" fill="purple" />
-        <rect x="290" y="80" width="50" height="120" fill="orange" />   
-      </svg>
-      
-    <svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="290" y="80" width="50" height="120" fill="orange" />
+    </svg>
+    <svg width="600" height="300" id="svg-1">
+        <rect width="75" height="125" fill="#5d9ac9" x="50" y="150"></rect>
+        <rect width="75" height="100" fill="#5d9ac9" x="130" y="175"></rect>
+        <rect width="75" height="75" fill="#5d9ac9" x="210" y="200"></rect>
+        <rect width="75" height="50" fill="#5d9ac9" x="290" y="225"></rect>
+        <rect width="75" height="25" fill="#5d9ac9" x="370" y="250"></rect>
+        <rect width="75" height="5" fill="#5d9ac9" x="450" y="270"></rect>
+    </svg>
+
+    <!-- <svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
                 <stop id="stop1" stop-color="rgba(232.147, 75.465, 1.311, 1)" offset="0%"></stop>
@@ -107,8 +262,22 @@
         <path fill="url(#sw-gradient)"
             d="M16.4,-19.1C23,-14,31.5,-10.5,32.5,-5.6C33.5,-0.7,27,5.6,22.5,12.7C18.1,19.9,15.6,28,10.7,30.1C5.8,32.2,-1.6,28.4,-10.7,26.4C-19.8,24.4,-30.6,24.2,-33.4,19.3C-36.1,14.5,-30.8,5,-29.1,-5.2C-27.3,-15.3,-29.1,-26.1,-24.9,-31.6C-20.6,-37.2,-10.3,-37.5,-2.7,-34.2C4.9,-31,9.7,-24.2,16.4,-19.1Z"
             width="100%" height="100%" transform="translate(50 50)" stroke-width="0" style="transition: 0.3s;"></path>
-    </svg>
-    <footer>COS3045 Data Visualisation</footer>
+    </svg> -->
+    <footer class="footer">
+        <div class="content">
+            <span class="logo">COS30045 Data Visualisation</span>
+        </div>
+    </footer>
+
+    <!-- 
+        - #BACK TO TOP
+      -->
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
 </body>
+<script src="./assets/js/script.js" defer></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </html>

@@ -12,12 +12,12 @@
     --rich-black-fogra-29-1: hsl(210, 26%, 11%);
     --rich-black-fogra-29-2: hwb(210 2% 94%);
     --silver-metallic: hsl(212, 9%, 67%);
-    --coquelicot_20: hsla(12, 98%, 52%, 0.2);
+    --coquelicot_20: hsla(254, 98%, 52%, 0.2);
     --coquelicot_10: hsla(12, 98%, 52%, 0.1);
     --sonic-silver: hsl(0, 0%, 47%);
     --cadet-gray: hsl(214, 15%, 62%);
     --light-gray: hsl(0, 0%, 80%);
-    --coquelicot: hsl(12, 98%, 52%);
+    --coquelicot: hsl(227, 98%, 52%);
     --gainsboro: hsl(0, 0%, 88%);
     --white_20: hsl(0, 0%, 100%, 0.2);
     --white_10: hsl(0, 0%, 100%, 0.1);
@@ -1432,7 +1432,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 
 h2 {
@@ -1520,4 +1520,177 @@ h2 {
 }
 .accordion-header.active:after {
   content: "\2212"; /* Unicode character for "minus" sign (−) */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: azure;
+ 
+}
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+p {
+  margin-bottom: 10px;
+}
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+figure {
+  margin: 20px 0;
+  text-align: center;
+}
+figcaption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+.image-container {
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.source-link {
+  color: blue;
+  text-decoration: none;
+}
+.source-link:hover {
+  text-decoration: underline;
+}
+.buttons {
+  margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+}
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn.active {
+  background-color: #1E3A8A; /* Example: dark blue */
+  color: white;
+}
+.chart-container {
+  width: 80%;
+  margin: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f4f4f4;
+}
+/* Basic styles for the navbar and dropdown */
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  display: block;
+}
+
+.navbar-link:hover {
+  background-color: #f5f5f5;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid #ccc;
+  display: none;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.dropdown li {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.dropdown li a {
+  padding: 5px 10px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown li a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show the dropdown on hover */
+.navbar-item:hover .dropdown,
+.navbar-item.show .dropdown {
+  display: block;
+}
+
+/* .header{
+  margin-bottom: 200px;
+} */
+body {
+  padding-top: 120px; /* Adjust to the height of the fixed header */
+}
+
+/* footer{
+  padding:20px;
+} */
+.footer {
+  background: linear-gradient(to right, #003366, #006699); /* Blue gradient background */
+  color: white; /* White text color for contrast */
+  padding: 10px 0; /* Padding inside the footer */
+  text-align: center; /* Center the text horizontally */
+  width: calc(100% + 40px); /* Extend the footer width to cover body padding */
+  margin-left: -20px; /* Offset the extra width */
+  margin-right: -20px;
+  margin-bottom:-20px; /* Offset the extra width */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.footer .content {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100%;
+  padding: 0 20px; /* Horizontal padding for content inside the footer */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.footer .logo {
+  font-size: 16px; /* Adjust font size as needed */
+  font-weight: bold; /* Make text bold */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: Add shadow for better readability */
 }

@@ -64,48 +64,36 @@ $(document).ready(function() {
   });
 
 });
+document.addEventListener('DOMContentLoaded', function () {
+  // Get all dropdown-toggle elements
+  var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-$(document).ready(function() {
-  // Initialize Slick Carousel
-  $('.slick-carousel').slick({
-    autoplay: true,
-    autoplaySpeed: 2000,
-    dots: true,
-    arrows: false
+  // Loop through each dropdown-toggle element
+  dropdownToggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+          // Check if the clicked element is an anchor tag inside the dropdown
+          if (!e.target.closest('.dropdown-menu a')) {
+              e.preventDefault(); // Prevent default only when clicking the toggle, not the links
+
+              // Close any open dropdowns that aren't the one being clicked
+              dropdownToggles.forEach(function (item) {
+                  if (item !== toggle) {
+                      item.classList.remove('show');
+                  }
+              });
+
+              // Toggle the 'show' class on the clicked item
+              toggle.classList.toggle('show');
+          }
+      });
+  });
+
+  // Close the dropdown if clicked outside of it
+  document.addEventListener('click', function (e) {
+      if (!e.target.closest('.dropdown-toggle')) {
+          dropdownToggles.forEach(function (item) {
+              item.classList.remove('show');
+          });
+      }
   });
 });
-
-$(document).ready(function() {
-  // Toastr options
-  toastr.options = {
-    "closeButton": true,
-    "debug": false,
-    "newestOnTop": false,
-    "progressBar": true,
-    "positionClass": "toast-top-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut",
-    "toastClass": "toast-custom"
-  };
-
-  // Handle form submission
-  $('#contactForm').submit(function(event) {
-    event.preventDefault(); // Prevent default form submission
-    // Trigger Toastr notification
-    toastr.success('Message sent');
-    // Clear form fields
-    $('#contactForm')[0].reset();
-  });
-});
-function toggleAccordion(element) {
-  const content = element.nextElementSibling;
-  content.classList.toggle('show');
-}
