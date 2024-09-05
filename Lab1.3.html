@@ -76,7 +76,7 @@
             color: white;
             padding: 10px 0;
             text-align: center;
-            width: calc(100% + 85px);
+            width: calc(100% + 80px);
             margin-left: -40px;
             margin-right: -40px;
             margin-bottom: -80px;
@@ -87,6 +87,7 @@
 <body>
 
     <h1>Drawing Shapes of SVG</h1>
+    <h2>In Lab 1.3, draw Japanese flag above the bar chart</h2>
     <header class="header" style="background-color: white;" data-header>
         <div class="container">
             <a href="#" class="logo">
@@ -124,8 +125,8 @@
                     <li class="navbar-item dropdown-toggle">
                         <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
                         <ul class="dropdown">
-                            <li><a href="#">Sub-item 1</a></li>
-                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="Lab3.1.html">Lab 3.1</a></li>
+                            <li><a href="Lab3.2.html">Lab 3.2</a></li>
                             <li><a href="#">Sub-item 3</a></li>
                         </ul>
                     </li>
@@ -178,8 +179,7 @@
                 <span class="line"></span>
             </button>
         </div>
-    </header>
-    <svg width="300" height="50">
+    </header>    <svg width="300" height="50">
         <circle cx="25" cy="25" r="25"></circle>
     </svg>
 
@@ -194,6 +194,7 @@
         <polyline points="0,40 40,40 40,80 80,80 80,120 120,120 120,160"
         style="fill:yellow;stroke:red;stroke-width:4" />
       </svg> -->
+     
     <div class="content">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script>
@@ -231,17 +232,20 @@
 
         </script>
     </div>
+    
     <svg width="320" height="130" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="100" x="10" y="10"
             style="fill:rgb(255, 102, 0);stroke-width:3;stroke:rgb(0, 191, 255)" />
     </svg>
-    <svg width="400" height="200" xmlns="http://www.w3.org/2000/svg"
-        style="background-color: rgb(121, 158, 158);margin-right:50px;">
-        <rect x="10" y="50" width="50" height="150" fill="blue" />
-        <rect x="80" y="70" width="50" height="130" fill="green" />
-        <rect x="150" y="30" width="50" height="170" fill="red" />
-        <rect x="220" y="100" width="50" height="100" fill="purple" />
-        <rect x="290" y="80" width="50" height="120" fill="orange" />
+    
+    <svg width="400" height="320" xmlns="http://www.w3.org/2000/svg" style="background-color: rgb(121, 158, 158); margin-right:50px;">
+        <rect width="300" height="100" x="50" y="10" fill="white"/>
+        <circle cx="200" cy="60" r="30" fill="red"/>
+        <rect x="10" y="150" width="50" height="150" fill="blue" />
+        <rect x="80" y="170" width="50" height="130" fill="green" />
+        <rect x="150" y="130" width="50" height="170" fill="red" />
+        <rect x="220" y="200" width="50" height="100" fill="purple" />
+        <rect x="290" y="180" width="50" height="120" fill="orange" />
     </svg>
     <svg width="600" height="300" id="svg-1">
         <rect width="75" height="125" fill="#5d9ac9" x="50" y="150"></rect>

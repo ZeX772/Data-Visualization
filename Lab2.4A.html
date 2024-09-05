@@ -97,8 +97,8 @@
                     <li class="navbar-item dropdown-toggle">
                         <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
                         <ul class="dropdown">
-                            <li><a href="#">Sub-item 1</a></li>
-                            <li><a href="#">Sub-item 2</a></li>
+                            <li><a href="Lab3.1.html">Lab 3.1</a></li>
+                            <li><a href="Lab3.2.html">Lab 3.2</a></li>
                             <li><a href="#">Sub-item 3</a></li>
                         </ul>
                     </li>
@@ -151,8 +151,7 @@
                 <span class="line"></span>
             </button>
         </div>
-    </header>
-    <h1 class="title">Chart drawn from CSV file</h1>
+    </header>    <h1 class="title">Chart drawn from CSV file</h1>
 
     <div class="content">
         <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -188,7 +187,6 @@
                     .attr("height", d => d.pets2019 * 5)
                     .attr("fill", "teal");
 
-                // Add labels at the bottom of the bars for 2019
                 svg2019.selectAll("text.label")
                     .data(data2019)
                     .enter()
@@ -203,7 +201,8 @@
                 d3.select(".content")
                     .append("div")
                     .attr("class", "figure-label")
-                    .text("Fig 1: Pet ownership in 2019");
+                    .text("Fig 1: Pet ownership in 2019")
+                    .style("color","black");
 
                 const svg2021 = d3.select(".content")
                     .append("svg")
@@ -231,11 +230,13 @@
                     .attr("text-anchor", "middle")
                     .attr("fill", "")
                     .attr("font-size", "12px")
+                    
 
                 d3.select(".content")
                     .append("div")
                     .attr("class", "figure-label")
-                    .text("Fig 2: Pet ownership in 2021");
+                    .text("Fig 2: Pet ownership in 2021")
+                    .style("color","black");
 
             });
 
