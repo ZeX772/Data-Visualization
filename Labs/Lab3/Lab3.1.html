@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <header class="header" style="background-color: white;" data-header>
+     <header class="header" style="background-color: white;" data-header>
         <div class="container">
             <a href="#" class="logo">
                 <img src="clipboard.png" alt="Logo" width="100" height="auto">
@@ -44,27 +44,25 @@
                     <li class="navbar-item dropdown-toggle">
                         <a href="#" class="navbar-link" data-nav-link>Lab 1</a>
                         <ul class="dropdown">
-                            <li><a href="Lab1.1.html">Lab 1.1</a></li>
-                            <li><a href="Lab1.2.html">Lab 1.2</a></li>
-                            <li><a href="Lab1.3.html">Lab 1.3</a></li>
+                            <li><a href="Labs/Lab1/Lab1.1.html">Lab 1.1</a></li>
+                            <li><a href="Labs/Lab1/Lab1.2.html">Lab 1.2</a></li>
+                            <li><a href="Labs/Lab1/Lab1.3.html">Lab 1.3</a></li>
                         </ul>
                     </li>
                     <li class="navbar-item dropdown-toggle">
                         <a href="#" class="navbar-link" data-nav-link>Lab 2</a>
                         <ul class="dropdown">
-                            <li><a href="Lab2.1.html">Lab 2.1</a></li>
-                            <li><a href="Lab2.2.html">Lab 2.2</a></li>
-                            <li><a href="Lab2.3.html">Lab 2.3</a></li>
-                            <li><a href="Lab2.4.html">Lab 2.4</a></li>
-                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
+                            <li><a href="Labs/Lab2/Lab2.1.html">Lab 2.1</a></li>
+                            <li><a href="Labs/Lab2/Lab2.2.html">Lab 2.2</a></li>
+                            <li><a href="Labs/Lab2/Lab2.3.html">Lab 2.3</a></li>
+                            <li><a href="Labs/Lab2/Lab2.4.html">Lab 2.4</a></li>
                         </ul>
                     </li>
                     <li class="navbar-item dropdown-toggle">
                         <a href="additional.html" class="navbar-link" data-nav-link>Lab 3</a>
                         <ul class="dropdown">
-                            <li><a href="Lab3.1.html">Lab 3.1</a></li>
-                            <li><a href="Lab3.2.html">Lab 3.2</a></li>
-                            <li><a href="#">Sub-item 3</a></li>
+                            <li><a href="Labs/Lab3/Lab3.1.html">Sub-item 1</a></li>
+                            <li><a href="Labs/Lab3/Lab3.2.html">Sub-item 2</a></li>
                         </ul>
                     </li>
                     <li class="navbar-item dropdown-toggle">
@@ -121,30 +119,71 @@
     <svg style="min-height: 70vh;"></svg>
 
     <script>
+        var w = 600
+        var h = 200
+        var padding = 75
+
         var dataset = [
-            [5, 20, 5],
-            [480, 90, 10],
-            [250, 50, 8],
-            [105, 95, 12],
-            [25, 67, 7],
-            [225, 88, 15]
+            [5, 20],
+            [480, 90],
+            [250, 50],
+            [105, 95],
+            [25, 67],
+            [225, 88]
         ];
 
-        var svg = d3.select("svg");
+        // var scale = d3.scaleLinear()
+        //                 // .domain([100,500])
+        //                 // .range([10, 350]);
+
+        //                 .domain([d3.min(dataset, function(d){
+        //                     return d[0];
+        //                 }),
+        //                 d3.max(dataset, function(d){
+        //                     return d[0];
+        //                 })])
+        //                 .range([padding,w-padding]);
+
+        var xScale = d3.scaleLinear()
+            .domain([d3.min(dataset, function (d) {
+                return d[0];
+            }),
+            d3.max(dataset, function (d) {
+                return d[0];
+            })])
+            .range([padding, w - padding]);
+
+        var yScale = d3.scaleLinear()
+            .domain([d3.min(dataset, function (d) {
+                return d[1];
+            }),
+            d3.max(dataset, function (d) {
+                return d[1];
+            })])
+            .range([h - padding, padding]);
+
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h)
+            .attr("fill", "blue");
+
         svg.selectAll("circle")
             .data(dataset)
             .enter()
             .append("circle")
             .attr("cx", function (d, i) {
-                return d[0];
+                return xScale(d[0]);
             })
             .attr("cy", function (d) {
-                return d[1];
+                return yScale(d[1]);
             })
-            .attr("r", function (d) {
-                return d[2];
-            })
+            .attr("r", 5)
+            // .attr("r", function (d) {
+            //     return d[2];
+            // })
             .attr("fill", "slategrey");
+
 
         svg.selectAll("text")
             .data(dataset)
@@ -152,12 +191,13 @@
             .append("text")
             .text(function (d) {
                 return d[0] + "," + d[1];
+                // return xScale(d[0]) + "," + yScale(d[1]);
             })
             .attr("x", function (d) {
-                return d[0] + 10;
+                return xScale(d[0]) + 10;
             })
             .attr("y", function (d) {
-                return d[1];
+                return yScale(d[1]) - 5;
             })
     </script>
 
