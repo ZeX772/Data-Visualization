@@ -1,6 +1,6 @@
 function init(){
 
-    d3.csv("task2.4.csv").then(function(data){
+    d3.csv("../../task2.4.csv").then(function(data){
        console.log(data);
        wombatSightings = data;
 
