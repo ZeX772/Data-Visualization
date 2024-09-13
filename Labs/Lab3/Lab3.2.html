@@ -156,14 +156,14 @@
         //     .range([h - padding, padding]);
         var xScale = d3.scaleLinear()
             .domain([0, d3.max(dataset, function (d) {
-                 return d[0];
-                 })])
+                return d[0];
+            })])
             .range([padding, w - padding]);
 
         var yScale = d3.scaleLinear()
             .domain([0, d3.max(dataset, function (d) {
-                 return d[1]; 
-                })])
+                return d[1];
+            })])
             .range([h - padding, padding]);
 
         var svg = d3.select("body")
