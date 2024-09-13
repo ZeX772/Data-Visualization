@@ -135,64 +135,67 @@
             [500, 90]
         ];
 
+        // Define the x-scale as a linear scale,  which represents the x-coordinates
         var xScale = d3.scaleLinear()
             .domain([d3.min(dataset, function (d) {
-                return d[0];
+                return d[0];  // min x value
             }),
             d3.max(dataset, function (d) {
-                return d[0];
+                return d[0];  // max x value
             })])
-            .range([padding, w - padding]);
+            .range([padding, w - padding]); //Sets the x-axis to stretch from a left margin (padding) to a right margin (width minus padding)
 
+        // Define the y-scale as a linear scale,  which represents the y-coordinates
         var yScale = d3.scaleLinear()
             .domain([d3.min(dataset, function (d) {
-                return d[1];
+                return d[1];  // min y value
             }),
             d3.max(dataset, function (d) {
-                return d[1];
+                return d[1];  // max y value
             })])
-            .range([h - padding, padding]);
+            .range([h - padding, padding]); // Inverts the y-axis so values start from the bottom (height minus padding) and end at the top (padding)
 
+        // Create the SVG container where the visualization will be drawn.
         var svg = d3.select("body")
             .append("svg")
-            .attr("width", w)
+            .attr("width", w) // The width (w) and height (h) of the SVG are defined by the variables in above
             .attr("height", h)
-            .attr("fill", "blue");
+            .attr("fill", "blue");  // SVG background fill(blue)
 
+        // Append circles and each circle is positioned based on the x and y values scaled by xScale and yScale
         svg.selectAll("circle")
             .data(dataset)
             .enter()
             .append("circle")
             .attr("cx", function (d, i) {
-                return xScale(d[0]);
+                return xScale(d[0]);  // Set x position based on the scaled x value
             })
             .attr("cy", function (d) {
-                return yScale(d[1]);
+                return yScale(d[1]);  // Set y position based on the scaled y value
             })
-            .attr("r", 5)
+            .attr("r", 5)  // Set the radius of each circle to 5 pixels
             .attr("fill", d => {
-                if (d[0] >= 500 && d[1] >= 90) {
+                if (d[0] >= 500 && d[1] >= 90) { // If x >= 500 and y >= 90, fill circle with red, otherwise black
                     return "red";
                 } else {
                     return "black";
                 }
             });
 
-
-        svg.selectAll("text")
+        svg.selectAll("text") // Append text labels to the visualization for each data point(circle)
             .data(dataset)
             .enter()
             .append("text")
             .text(function (d) {
-                return d[0] + "," + d[1];
-                // return xScale(d[0]) + "," + yScale(d[1]);
+                return d[0] + "," + d[1];  // Display each data point's x and y values as text
             })
             .attr("x", function (d) {
-                return xScale(d[0]) + 10;
+                return xScale(d[0]) + 10;  // Position the text label 10 pixels to the right of the corresponding circle
             })
             .attr("y", function (d) {
-                return yScale(d[1]) - 5;
-            })
+                return yScale(d[1]) - 5;  // Position the text label 5 pixels above the corresponding circle
+            });
+
     </script>
 
     <footer class="footer">

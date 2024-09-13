@@ -154,14 +154,15 @@
         //         return d[1];
         //     })])
         //     .range([h - padding, padding]);
+
         var xScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset, function (d) {
+            .domain([0, d3.max(dataset, function (d) { // The domain starts at 0 and ends at the maximum x-value from the dataset
                 return d[0];
             })])
             .range([padding, w - padding]);
 
         var yScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset, function (d) {
+            .domain([0, d3.max(dataset, function (d) { // The domain starts at 0 and ends at the maximum y-value from the dataset
                 return d[1];
             })])
             .range([h - padding, padding]);
@@ -173,57 +174,55 @@
             .attr("fill", "blue");
 
         svg.selectAll("circle")
-            .data(dataset)
+            .data(dataset)  // Bind data to circles
             .enter()
             .append("circle")
             .attr("cx", function (d, i) {
-                return xScale(d[0]);
+                return xScale(d[0]);  // Position x based on the scaled x-value
             })
             .attr("cy", function (d) {
-                return yScale(d[1]);
+                return yScale(d[1]);  // Position y based on the scaled y-value
             })
-            .attr("r", 5)
+            .attr("r", 5)  // Set radius of circles
             .attr("fill", d => {
-                if (d[0] >= 500 && d[1] >= 90) {
+                if (d[0] >= 500 && d[1] >= 90) {// Append text labels to the visualization for each data point(circle)
                     return "red";
                 } else {
                     return "black";
                 }
             });
 
-
-        svg.selectAll("text")
+        svg.selectAll("text")// Append text labels to the visualization for each data point(circle)
             .data(dataset)
             .enter()
             .append("text")
             .text(function (d) {
-                return d[0] + "," + d[1];
-                // return xScale(d[0]) + "," + yScale(d[1]);
+                return d[0] + "," + d[1]; // Display each data point's x and y values as text
             })
             .attr("x", function (d) {
-                return xScale(d[0]) + 10;
+                return xScale(d[0]) + 10;  // Position text 10 pixels right of the corresponding circle
             })
             .attr("y", function (d) {
-                return yScale(d[1]) - 5;
-            })
-        var xAxis = d3.axisBottom()
-            .ticks(10)
-            .scale(xScale);
-        svg.append("g")
-            .attr("transform", "translate(0, " + (h - padding) + ")")
-            .call(xAxis);
+                return yScale(d[1]) - 5;  // Position text 5 pixels above the corresponding circle
+            });
 
-        var yAxis = d3.axisLeft()
-            .ticks(10)
-            .scale(yScale);
-        svg.append("g")
-            .attr("transform", "translate(" + padding + ",0)")
-            .call(yAxis);
+        var xAxis = d3.axisBottom()  // Define the y-axis using d3.axisLeft() and set it with 10 ticks
+            .ticks(10) 
+            .scale(xScale); 
 
-        // var yAxis = d3.axisAbove()
-        //         .scale(yScale);
-        //     svg.append("g")
-        //          .call(yAxis);
+     
+        svg.append("g")   // Append the x-axis to the SVG and move it to the bottom of the chart (h - padding)
+            .attr("transform", "translate(0, " + (h - padding) + ")")  // Position it at the bottom
+            .call(xAxis);  // Call the x-axis function to draw it
+
+        var yAxis = d3.axisLeft()   // Define the y-axis using d3.axisLeft() and set it with 10 ticks
+            .ticks(10) 
+            .scale(yScale);  
+
+        svg.append("g") // Append the y-axis to the SVG and move it to the left of the chart (padding)
+            .attr("transform", "translate(" + padding + ",0)")  // Position it at the left
+            .call(yAxis);  // Call the y-axis function to draw it.F
+
     </script>
 
     <footer class="footer">
