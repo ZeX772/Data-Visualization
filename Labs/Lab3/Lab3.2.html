@@ -118,6 +118,7 @@
     </header>
 
     <h1>The D3</h1>
+    <p>The following is a modified version of original Lab 3-2 with axis label</p>
     <svg style="min-height: 70vh;"></svg>
 
     <script>
@@ -126,15 +127,24 @@
         var padding = 75
 
         var dataset = [
-            [5, 20],
-            [480, 100],
-            [250, 50],
-            [105, 95],
-            [25, 67],
-            [225, 88],
-            [500, 90]
+            [2, 8],
+            [3, 5],
+            [5, 17],
+            [6, 6],
+            [6, 12],
+            [7, 20],
+            [8, 22],
+            [10, 11],
+            [5, 15],
+            [6, 16],
+            // [5, 20],
+            // [480, 100],
+            // [250, 50],
+            // [105, 95],
+            // [25, 67],
+            // [225, 88],
+            // [500, 90]
         ];
-
 
 
         // var xScale = d3.scaleLinear()
@@ -207,21 +217,39 @@
             });
 
         var xAxis = d3.axisBottom()  // Define the y-axis using d3.axisLeft() and set it with 10 ticks
-            .ticks(10) 
-            .scale(xScale); 
+            .ticks(10)
+            .scale(xScale);
 
-     
+
         svg.append("g")   // Append the x-axis to the SVG and move it to the bottom of the chart (h - padding)
             .attr("transform", "translate(0, " + (h - padding) + ")")  // Position it at the bottom
             .call(xAxis);  // Call the x-axis function to draw it
 
         var yAxis = d3.axisLeft()   // Define the y-axis using d3.axisLeft() and set it with 10 ticks
-            .ticks(10) 
-            .scale(yScale);  
+            .ticks(10)
+            .scale(yScale);
 
         svg.append("g") // Append the y-axis to the SVG and move it to the left of the chart (padding)
             .attr("transform", "translate(" + padding + ",0)")  // Position it at the left
-            .call(yAxis);  // Call the y-axis function to draw it.F
+            .call(yAxis); 
+
+        svg.append("text")
+            .attr("text-anchor", "end")  
+            .attr("x", w / 2)  
+            .attr("y", h - 10) 
+            .text("Tree Age(year)")  
+            .attr("font-size", "16px")
+            .attr("fill", "black");
+
+        svg.append("text")
+            .attr("text-anchor", "end") 
+            .attr("transform", "rotate(-90)")  
+            .attr("x", -h / 2) 
+            .attr("y", 20) 
+            .text("Tree height(m)") 
+            .attr("font-size", "16px")
+            .attr("fill", "black");
+
 
     </script>
 
