@@ -66,30 +66,21 @@
                             <li><a href="Lab3.2.html">Lab 3.2</a></li>
                         </ul>
                     </li>
-                    <li class="navbar-item dropdown-toggle">
-                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 4</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Sub-item 1</a></li>
-                            <li><a href="#">Sub-item 2</a></li>
-                            <li><a href="#">Sub-item 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="navbar-item dropdown-toggle">
-                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 5</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Sub-item 1</a></li>
-                            <li><a href="#">Sub-item 2</a></li>
-                            <li><a href="#">Sub-item 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="navbar-item dropdown-toggle">
-                        <a href="contact.html" class="navbar-link" data-nav-link>Lab 6</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Sub-item 1</a></li>
-                            <li><a href="#">Sub-item 2</a></li>
-                            <li><a href="#">Sub-item 3</a></li>
-                        </ul>
-                    </li>
+                    <li class="navbar-item dropdown-toggle"></li>
+                    <a href="contact.html" class="navbar-link" data-nav-link>Lab 5</a>
+                    <ul class="dropdown">
+                        <li><a href="../Lab5/Lab5.1.html">Lab 5.1</a></li>
+                        <li><a href="../Lab5/Lab5.2.html">Lab 5.2</a></li>
+                        <li><a href="../Lab5/Lab5.3.html">Lab 5.3</a></li>
+                    </ul>
+                </li>
+                <li class="navbar-item dropdown-toggle">
+                    <a href="contact.html" class="navbar-link" data-nav-link>Lab 6</a>
+                    <ul class="dropdown">
+                        <li><a href="../Lab6/Lab6.1.html">Lab 6.1</a></li>
+                        <li><a href="../Lab6/Lab6.2.html">Lab 6.2</a></li>
+                    </ul>
+                </li>
                     <li class="navbar-item dropdown-toggle">
                         <a href="contact.html" class="navbar-link" data-nav-link>Lab 7</a>
                         <ul class="dropdown">
@@ -233,22 +224,22 @@
             .attr("transform", "translate(" + padding + ",0)")  // Position it at the left
             .call(yAxis); 
 
-        svg.append("text")
-            .attr("text-anchor", "end")  
-            .attr("x", w / 2)  
+        svg.append("text") //Adding text for X-Label
+            .attr("text-anchor", "end") //putting it at the end, however it could be middle or the start 
+            .attr("x", w / 2)  // to center the text
             .attr("y", h - 10) 
-            .text("Tree Age(year)")  
-            .attr("font-size", "16px")
-            .attr("fill", "black");
+            .text("Tree Age(year)")  //The label
+            .attr("font-size", "16px")//Font size
+            .attr("fill", "black");//Font color
 
-        svg.append("text")
+        svg.append("text")//Adding text for Y-Label
             .attr("text-anchor", "end") 
-            .attr("transform", "rotate(-90)")  
-            .attr("x", -h / 2) 
-            .attr("y", 20) 
-            .text("Tree height(m)") 
-            .attr("font-size", "16px")
-            .attr("fill", "black");
+            .attr("transform", "rotate(-90)")  // Rotate the direction it could be 270 to achieve the same thing
+            .attr("x", -h / 2) //-h due to -90 and /2 to center the text
+            .attr("y", 20) //Assigning this a 20 value
+            .text("Tree height(m)") //The label
+            .attr("font-size", "16px")//Font size
+            .attr("fill", "black");//Font color
 
 
     </script>
