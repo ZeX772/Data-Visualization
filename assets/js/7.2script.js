@@ -18,7 +18,7 @@ function init() {
 
     var color = d3.scaleOrdinal(d3.schemeCategory10); 
 
-    var svg = d3.select("#scatterplot")
+    var svg = d3.select("#piechart")
         .append("svg")
         .attr("width", w + margin.left + margin.right)
         .attr("height", h + margin.top + margin.bottom)

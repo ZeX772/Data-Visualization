@@ -162,7 +162,7 @@ d3.select("#remove").on("click", function () {
     var bars = svg.selectAll("rect")
         .data(dataset);
 
-    // EXIT: Remove the bars that are no longer needed
+    //  Remove the bars that are no longer needed
     bars.exit()
         .transition()
         .duration(500)
@@ -170,7 +170,7 @@ d3.select("#remove").on("click", function () {
         .attr("height", 0)
         .remove();
 
-    // UPDATE: Update existing bars' positions and sizes
+    //  Update existing bars' positions and sizes
     bars.transition()
         .duration(500)
         .attr("x", function (d, i) {

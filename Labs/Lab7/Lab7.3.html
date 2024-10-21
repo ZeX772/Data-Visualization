@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Miow Kar Chun" />
+
+    <title>Lab 7.2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        .btn-primary {
+            background-color: var(--coquelicot);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:is(:hover, :focus) {
+            background-color: var(--white);
+            color: var(--coquelicot);
+            box-shadow: var(--shadow-2);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header" style="background-color: white;" data-header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="../../assets/images/clipboard.png" alt="Logo" width="100" height="auto">
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+                <ul class="navbar-list">
+                    <li class="navbar-item">
+                        <a href="../../index.html" class="navbar-link" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 1</a>
+                        <ul class="dropdown">
+                            <li><a href="../Lab1/Lab1.1.html">Lab 1.1</a></li>
+                            <li><a href="../Lab1/Lab1.2.html">Lab 1.2</a></li>
+                            <li><a href="../Lab1/Lab1.3.html">Lab 1.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 2</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab2.1.html">Lab 2.1</a></li>
+                            <li><a href="Lab2.2.html">Lab 2.2</a></li>
+                            <li><a href="Lab2.3.html">Lab 2.3</a></li>
+                            <li><a href="Lab2.4.html">Lab 2.4</a></li>
+                            <li><a href="Lab2.4A.html">Lab 2.4 Additional</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="../Lab3/#" class="navbar-link" data-nav-link>Lab 3</a>
+                        <ul class="dropdown">
+                            <li><a href="../Lab3/Lab3.1.html">Lab 3.1</a></li>
+                            <li><a href="../Lab3/Lab3.2.html">Lab 3.2</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 5</a>
+                        <ul class="dropdown">
+                            <li><a href="../Lab5/Lab5.1.html">Lab 5.1</a></li>
+                            <li><a href="../Lab5/Lab5.2.html">Lab 5.2</a></li>
+                            <li><a href="../Lab5/Lab5.3.html">Lab 5.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 6</a>
+                        <ul class="dropdown">
+                            <li><a href="../Lab6/Lab6.1.html">Lab 6.1</a></li>
+                            <li><a href="../Lab6/Lab6.2.html">Lab 6.2</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 7</a>
+                        <ul class="dropdown">
+                            <li><a href="Lab7.1.html">Lab 7.1</a></li>
+                            <li><a href="Lab7.2.html">Lab 7.2</a></li>
+                            <li><a href="Lab7.3.html">Lab 7.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-item dropdown-toggle">
+                        <a href="#" class="navbar-link" data-nav-link>Lab 8</a>
+                        <ul class="dropdown">
+                            <li><a href="../Lab8/Lab8.1.html">Lab 8.1</a></li>
+                            <li><a href="../Lab8/Lab8.2.html">Lab 8.2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
+    <h1>The D3</h1>
+    <h2>Lab 7.2</h2>
+
+    <body>
+        <!-- <div class="button-container">
+            <button id="add" class="btn btn-primary">Add</button>
+            <button id="remove" class="btn btn-primary">Remove</button>
+            <button id="sort" class="btn btn-primary">Sort</button>
+        </div> -->
+<div id="piechart"></div>
+        <script src="../../assets/js/7.2script.js"></script>
+        <script>
+            init();
+        </script>
+    </body>
+    <script>
+
+    </script>
+    <div style="min-height: 50vh;"></div>
+    <footer class="footer">
+        <div class="content">
+            <span class="logo">COS30045 Data Visualisation</span>
+        </div>
+    </footer>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+
+    <script src="./assets/js/script.js" defer></script>
+    <!-- <script src="/assets/js/5.1script.js"defer></script> -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+
+</html>

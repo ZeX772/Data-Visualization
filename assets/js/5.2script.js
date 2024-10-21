@@ -1,5 +1,3 @@
-
-
 var w = 500;
 var h = 400;
 var barPadding = 3;
