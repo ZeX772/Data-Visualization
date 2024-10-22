@@ -1,5 +1,4 @@
 function init() {
-    console.log("MapChart Initialized");
 
     var w = 800; // Dynamic width
     var h = 500; // Dynamic height
