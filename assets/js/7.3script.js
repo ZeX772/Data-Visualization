@@ -44,7 +44,7 @@ function init() {
         .enter().append("g")
         .classed('layer', true)
         .attr("fill", function(d, i) {
-            return ["#add8e6", "#6495ed", "#00008b"][i];
+            return ["#ff7f0e", "#2ca02c", "#d62728"][i];
         });
 
     // Append the rectangles for each data point in each layer
@@ -67,8 +67,9 @@ function init() {
     chartGroup.append("g").call(yAxis);
 
     // Add a legend
-    var legendLabels = ["Light Blue", "Medium Blue", "Dark Blue"];
-    var legendColors = ["#add8e6", "#6495ed", "#00008b"]; // Light Blue, Cornflower Blue, Dark Blue
+    var legendLabels = ["Orange", "Grapes", "Apples"];
+    var legendColors = ["#ff7f0e", "#2ca02c", "#d62728"];
+
     
 
     var legend = chartGroup.selectAll(".legend")
