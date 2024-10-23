@@ -17,114 +17,76 @@ function init() {
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h)
-                .style("background-color", "#f0f0f0"); // Improved background styling
+                .style("background-color", "#f0f0f0");
 
-    // Define a color scale for better visualization
-    var color = d3.scaleSequential(d3.interpolateGreys)
-                  .domain([0, 10, 30]); // Adjust domain based on your data
+    // Load unemployment data from CSV
+    d3.csv("../../VIC_LGA_unemployment.csv").then(data => {
+        // Define a color scale using d3's interpolateGreys for unemployment data
+        const color = d3.scaleSequential(d3.interpolateGreys)
+            .domain([0, 10000]); // Adjust according to your data range
 
+        // Load LGA (Local Government Areas) geojson data
+        d3.json('../../LGA_VIC.json').then(json => {
+            // Loop through each LGA in the unemployment data
+            data.forEach(unemploymentData => {
+                const dataState = unemploymentData.LGA;
+                const dataValue = parseFloat(unemploymentData.unemployed);
 
-    // Load the CSV file using promises (d3.v7 syntax)
-    d3.csv("../../VIC_LGA_unemployment.csv").then(function(data) {
-
-        // Log the data to ensure it is loaded correctly
-        console.log("Loaded data:", data);
-
-        // Convert 'unemployed' to numeric if needed
-        $.each(data, function(index, d) {
-            if (d.unemployed) {
-                d.unemployed = +d.unemployed; // Convert 'unemployed' to number
-            } else {
-                console.error("Missing 'unemployed' field in row:", d);
-            }
-        });
-
-        // Check the 'unemployed' values to confirm correct conversion
-        console.log("Processed 'unemployed' values:", data.map(d => d.unemployed));
-
-        // Get the minimum and maximum 'unemployed' values for the domain
-        var minUnemployed = d3.min(data, function(d) { return d.unemployed; });
-        var maxUnemployed = d3.max(data, function(d) { return d.unemployed; });
-
-        if (isNaN(minUnemployed) || isNaN(maxUnemployed)) {
-            console.error("Invalid 'unemployed' data, unable to calculate min/max.");
-            return;
-        }
-
-        // // Define the color scale based on the actual data range
-        // var color = d3.scaleSequential(d3.interpolateBlues)
-        //             .domain([minUnemployed, maxUnemployed]);
-
-        // Example usage of the color scale using jQuery's $.each
-        $.each(data, function(index, d) {
-            console.log(`Color for ${d.unemployed}: `, color(d.unemployed));
-        });
-
-    }).catch(function(error) {
-        // Handle any errors that occur during file loading
-        console.error("Error loading the CSV file:", error);
-    });
-
-    // Load GeoJSON data
-    d3.json("../../LGA_VIC.json").then(function(json) {
-        // Bind data and create one path per GeoJSON feature
-        svg.selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("stroke", "#333") // Improved stroke for boundaries
-            .attr("fill", function(d, i) {
-                return color(i % 10); // Fill with color based on index or property
-            })
-            .on("mouseover", function(event, d) {
-                d3.select(this)
-                  .attr("fill", "#ffcc00"); // Highlight on hover
-            })
-            .on("mouseout", function(event, d) {
-                d3.select(this)
-                  .attr("fill", function(d, i) {
-                      return color(i % 10); // Reset color on mouse out
-                  });
+                // Find corresponding feature in GeoJSON
+                const correspondingFeature = json.features.find(feature => feature.properties.LGA_name === dataState);
+                if (correspondingFeature) {
+                    correspondingFeature.properties.value = dataValue; // Assign unemployment value
+                }
             });
 
-    }).catch(function(error) {
-        console.error("Error loading the GeoJSON data: ", error); // Error handling
-    });
-
-        // Load the city data and add circles for towns and cities
-        d3.csv("../../VIC_city.csv").then(function(cityData) {
-            // Add circles for each city/town
-            svg.selectAll("circle")
-                .data(cityData)
+            // Bind geojson features to the map
+            svg.selectAll('path')
+                .data(json.features)
                 .enter()
-                .append("circle")
-                .attr("cx", function(d) {
-                    return projection([+d.lon, +d.lat])[0]; // Map longitude to x using projection
+                .append('path')
+                .attr('d', path)
+                .attr('id', d => d.properties.LGA_name.replace(/\s/g, "_")) // Assign ID based on LGA name
+                .style('fill', d => {
+                    const value = d.properties.value;
+                    return value ? color(value) : '#ccc'; // Handle missing data
                 })
-                .attr("cy", function(d) {
-                    return projection([+d.lon, +d.lat])[1]; // Map latitude to y using projection
-                })
-                .attr("r", 5) // Radius of the circle
-                .attr("fill", "red") // Color of the circle
-                .attr("stroke", "black") // Circle border color
-                .attr("stroke-width", 1.5)
-                .attr("opacity", 0.7) // Opacity for better visibility
-                .on("mouseover", function(event, d) {
-                    d3.select(this)
-                      .attr("r", 7) // Increase radius on hover
-                      .attr("opacity", 1); // Fully opaque on hover
-                })
-                .on("mouseout", function(event, d) {
-                    d3.select(this)
-                      .attr("r", 5) // Reset radius
-                      .attr("opacity", 0.7); // Reset opacity
-                })
-                .append("title") // Tooltip for city names
-                .text(function(d) {
-                    return d.place; // Display city/town name
-                });
-        }).catch(function(error) {
-            console.error("Error loading the city data:", error);
+                .attr('stroke', '#333');
+
+            // Load city data and add circles on top of the map
+            d3.csv("../../VIC_city.csv").then(cityData => {
+                // Add circles to represent the cities/towns on the map
+                svg.selectAll("circle")
+                    .data(cityData)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => projection([+d.lon, +d.lat])[0]) // Set x position using projection
+                    .attr("cy", d => projection([+d.lon, +d.lat])[1]) // Set y position using projection
+                    .attr("r", 5)                             // Set radius of the circle
+                    .attr("fill", "red")                      // Set fill color of the circle
+                    .style("opacity", 0.75)                   // Set opacity of the circle
+                    .on('mouseover', function(event, d) { // Add mouseover event for city/town tooltips
+                        d3.select(this).attr('r', 7); // Increase circle size on hover
+                        svg.append("text")
+                            .attr("x", projection([+d.lon, +d.lat])[0])
+                            .attr("y", projection([+d.lon, +d.lat])[1] - 10)
+                            .attr("class", "tooltip")
+                            .attr("text-anchor", "middle")
+                            .text(d.place)
+                            .style("fill","black")
+                            .style("font-size","14px");
+                    })
+                    .on('mouseout', function() { // Remove tooltip on mouseout
+                        d3.select(this).attr('r', 5); // Restore original circle size
+                        svg.selectAll(".tooltip").remove();
+                    });
+            }).catch(error => {
+                console.error("Error loading city data:", error);
+            });
+
+        }).catch(error => {
+            console.error("Error loading the GeoJSON data:", error);
         });
+    }).catch(error => {
+        console.error("Error loading the unemployment data:", error);
+    });
 }
